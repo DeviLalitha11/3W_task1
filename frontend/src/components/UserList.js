@@ -12,13 +12,13 @@ const UserList = ({ onClaim, onUpdate }) => {
   }, []);
 
   const fetchUsers = async () => {
-    const res = await axios.get("http://localhost:5000/api/users");
+    const res = await axios.get("https://threewtask.onrender.com/api/users");
     setUsers(res.data);
   };
 
   const addUser = async () => {
     if (!newUser) return;
-    await axios.post("http://localhost:5000/api/users", { name: newUser });
+    await axios.post("https://threewtask.onrender.com/api/users", { name: newUser });
     setNewUser("");
     fetchUsers();
     onUpdate();
@@ -26,13 +26,13 @@ const UserList = ({ onClaim, onUpdate }) => {
 
   const claimPoints = async () => {
     if (!selectedUser) return;
-    const res = await axios.post(`http://localhost:5000/api/users/${selectedUser}/claim`);
+    const res = await axios.post(`https://threewtask.onrender.com/api/users/${selectedUser}/claim`);
     onClaim(res.data);
     fetchUsers();
   };
 
   const deleteUser = async (userId) => {
-    await axios.delete(`http://localhost:5000/api/users/${userId}`);
+    await axios.delete(`https://threewtask.onrender.com/api/users/${userId}`);
     fetchUsers();
     onUpdate();
   };
