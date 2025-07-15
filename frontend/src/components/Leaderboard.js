@@ -10,7 +10,7 @@ const Leaderboard = ({ refresh, triggerRefresh }) => {
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
-      const res = await axios.get("http://localhost:5000/api/users/leaderboard/all");
+      const res = await axios.get("https://threewtask.onrender.com/api/users/leaderboard/all");
       const data = res.data;
 
       // Calculate total pages based on new data
@@ -29,7 +29,7 @@ const Leaderboard = ({ refresh, triggerRefresh }) => {
 
 
   const fetchLeaderboard = async () => {
-    const res = await axios.get("http://localhost:5000/api/users/leaderboard/all");
+    const res = await axios.get("https://threewtask.onrender.com/api/users/leaderboard/all");
     setLeaderboard(res.data);
   };
 
