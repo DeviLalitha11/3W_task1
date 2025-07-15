@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import UserList from './components/UserList';
 import Leaderboard from './components/Leaderboard';
 
 function App() {
