@@ -9,29 +9,21 @@ const Leaderboard = ({ refresh, triggerRefresh }) => {
   const usersPerPage = 5;
 
   useEffect(() => {
-    const fetchLeaderboard = async () => {
-      const res = await axios.get("https://threewtask.onrender.com/api/users/leaderboard/all");
-      const data = res.data;
-
-      // Calculate total pages based on new data
-      const newTotalPages = Math.ceil((data.length - 3) / usersPerPage);
-
-      // If current page > new total pages, go back one page
-      if (currentPage > newTotalPages && newTotalPages >= 1) {
-        setCurrentPage(newTotalPages);
-      }
-
-      setLeaderboard(data);
-    };
-
-    fetchLeaderboard();
-  }, [refresh]); // Runs every time triggerRefresh is called
-
-
   const fetchLeaderboard = async () => {
     const res = await axios.get("https://threewtask.onrender.com/api/users/leaderboard/all");
-    setLeaderboard(res.data);
+    const data = res.data;
+
+    const newTotalPages = Math.ceil((data.length - 3) / usersPerPage);
+
+    if (currentPage > newTotalPages && newTotalPages >= 1) {
+      setCurrentPage(newTotalPages);
+    }
+
+    setLeaderboard(data);
   };
+
+  fetchLeaderboard();
+}, [refresh, currentPage]); // ✅ Include currentPage here
 
   const crownColors = ["text-yellow-400", "text-gray-400", "text-orange-400"];
   const podiumOrder = [1, 0, 2];
