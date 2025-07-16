@@ -8,7 +8,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:3000',
   'https://quiet-dolphin-5abdc0.netlify.app',
-  'https://darling-biscotti-65a928.netlify.app/'
+  'https://darling-biscotti-65a928.netlify.app'
 ];
 
 const corsOptions = {
